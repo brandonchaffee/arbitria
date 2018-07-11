@@ -3,10 +3,10 @@ import { advanceBlock } from './helpers/advanceToBlock'
 import { duration, increaseTimeTo } from './helpers/increaseTime'
 import latestTime from './helpers/latestTime'
 
-const EndlessThresholdTest = artifacts.require('EndlessThresholdTest')
-const WindowedThresholdTest = artifacts.require('WindowedThresholdTest')
-const WindowedRatioTest = artifacts.require('WindowedRatioTest')
-const WindowedMajorityTest = artifacts.require('WindowedMajorityTest')
+const EndlessThresholdTest = artifacts.require('EndlessThresholdPropTest')
+const WindowedThresholdTest = artifacts.require('WindowedThresholdPropTest')
+const WindowedRatioTest = artifacts.require('WindowedRatioPropTest')
+const WindowedMajorityTest = artifacts.require('WindowedMajorityPropTest')
 const supply = 500
 const votingWindow = 1000
 const threshold = 300
@@ -17,7 +17,7 @@ const payload = ['0xca35b7d915458ef540ade6068dfe2f44e8fa733c',
   '027e57bcbae76c4b6a1c5ce589be41232498f1af86e1b1a2fc2bdffd740e9b37'
 ]
 
-contract('Approval Types', function (accounts) {
+contract('Proposal Approval Types', function (accounts) {
   beforeEach(async function () {
     await advanceBlock()
     this.midTime = latestTime() + duration.minutes(10)

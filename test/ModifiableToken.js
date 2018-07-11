@@ -3,9 +3,10 @@ import { increaseTimeTo, duration } from './helpers/increaseTime'
 import latestTime from './helpers/latestTime'
 import padBytes from './helpers/padBytes'
 
+const ZERO_ADDRESS = '0x0000000000000000000000000000000000000000'
 const standardTokennBehavior = require('./behaviors/StandardToken.js')
 const modificationBehavior = require('./behaviors/GenericModification.js')
-const DMod = artifacts.require('./test/WindowedMajorityTest.sol')
+const DMod = artifacts.require('WindowedMajorityModTest')
 const votingWindow = 4000
 const supply = 100000000
 const details = [
@@ -20,7 +21,7 @@ const targets = [
 ]
 const payloads = ['0x4b', '0x2D', '0x23']
 
-contract('Detailed Modification', function (accounts) {
+contract('Modifiable Token', function (accounts) {
   beforeEach(async function () {
     await advanceBlock()
     this.midTime = latestTime() + duration.minutes(10)
@@ -59,5 +60,5 @@ contract('Detailed Modification', function (accounts) {
   })
   modificationBehavior(payloads, votingWindow, supply, accounts)
   standardTokennBehavior(supply, accounts[0], accounts[1], accounts[2],
-    accounts[3])
+    ZERO_ADDRESS)
 })

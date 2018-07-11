@@ -1,10 +1,10 @@
 pragma solidity ^0.4.23;
 
-import "../implementations/WindowedMajority.sol";
+import "../implementations/EndlessThreshold.sol";
 
-contract WindowedMajorityTest is WindowedMajority {
-    constructor(uint256 _totalSupply, uint256 _window) public {
-        windowSize = _window;
+contract EndlessThresholdModTest is EndlessThreshold {
+    constructor(uint256 _totalSupply, uint256 _threshold) public {
+        approvalThreshold = _threshold;
         totalSupply_ = _totalSupply;
         balances[msg.sender] = _totalSupply;
     }

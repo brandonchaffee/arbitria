@@ -1,18 +1,19 @@
 pragma solidity ^0.4.23;
 
 import "../democratic/DemocraticUpgrading.sol";
-import "../democratic/EndlessThreshold.sol";
+import "../democratic/WindowedThreshold.sol";
 
-contract EndlessThresholdTest is DemocraticUpgrading, EndlessThreshold {
+contract WindowedThresholdPropTest is DemocraticUpgrading, WindowedThreshold {
     bool internal _initialized;
 
-    function initialize(uint256 _supply, uint256 _threshold)
+    function initialize(uint256 _supply, uint256 _window, uint256 _threshold)
     public {
         //These initialization arguments should be hardcoded
         require(!_initialized);
         totalSupply_ = _supply;
-        approvalThreshold = _threshold;
         balances[msg.sender] = _supply;
+        approvalThreshold = _threshold;
+        windowSize = _window;
         _initialized = true;
 
     }

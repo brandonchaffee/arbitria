@@ -1,18 +1,14 @@
 pragma solidity ^0.4.23;
 
-import "../implementations/WindowedRatio.sol";
+import "../implementations/WindowedThreshold.sol";
 
-contract WindowedRatioTest is WindowedRatio {
-    constructor(
-        uint256 _totalSupply,
-        uint256 _window,
-        uint256 _numerator,
-        uint256 _denominator
-    ) public {
-            totalSupply_ = _totalSupply;
-            windowSize = _window;
-            ratioNumerator = _numerator;
-            ratioDenominator = _denominator;
+contract WindowedThresholdModTest is WindowedThreshold {
+    constructor(uint256 _totalSupply, uint256 _window, uint256 _threshold)
+    public {
+        windowSize = _window;
+        totalSupply_ = _totalSupply;
+        approvalThreshold = _threshold;
+        windowSize = _window;
         balances[msg.sender] = _totalSupply;
     }
 

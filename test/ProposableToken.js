@@ -3,6 +3,7 @@ import { advanceBlock } from './helpers/advanceToBlock'
 import { duration, increaseTimeTo } from './helpers/increaseTime'
 import latestTime from './helpers/latestTime'
 
+const ZERO_ADDRESS = '0x0000000000000000000000000000000000000000'
 const DemTokenV1 = artifacts.require('DemTokenV1')
 const DemTokenV2 = artifacts.require('DemTokenV2')
 const DemTokenV3 = artifacts.require('DemTokenV2')
@@ -18,7 +19,7 @@ const details = [
   '027e57bcbae76c4b6a1c5ce589be41232498f1af86e1b1a2fc2bdffd740e9b39'
 ]
 
-contract('Democratic Upgradeablity', function (accounts) {
+contract('Proposable Token', function (accounts) {
   beforeEach(async function () {
     await advanceBlock()
     this.midTime = latestTime() + duration.minutes(10)
@@ -145,6 +146,11 @@ contract('Democratic Upgradeablity', function (accounts) {
     })
   })
   shouldBehaveLikeGeneric(details, votingWindow, supply, accounts)
-  shouldBehaveLikeStandardToken(supply, accounts[0], accounts[1], accounts[2],
-    accounts[3], votingWindow)
+  describe('Standard Token', function () {
+    beforeEach(async function () {
+      await this.token.initialize(supply, votingWindow)
+    })
+    shouldBehaveLikeStandardToken(supply, accounts[0], accounts[1], accounts[2],
+      ZERO_ADDRESS)
+  })
 })

@@ -4,10 +4,10 @@ import { duration, increaseTimeTo } from './helpers/increaseTime'
 import latestTime from './helpers/latestTime'
 import padBytes from './helpers/padBytes'
 
-const EndlessThresholdTest = artifacts.require('EndlessThresholdTest')
-const WindowedThresholdTest = artifacts.require('WindowedThresholdTest')
-const WindowedRatioTest = artifacts.require('WindowedRatioTest')
-const WindowedMajorityTest = artifacts.require('WindowedMajorityTest')
+const EndlessThresholdTest = artifacts.require('EndlessThresholdModTest')
+const WindowedThresholdTest = artifacts.require('WindowedThresholdModTest')
+const WindowedRatioTest = artifacts.require('WindowedRatioModTest')
+const WindowedMajorityTest = artifacts.require('WindowedMajorityModTest')
 const supply = 500
 const votingWindow = 1000
 const threshold = 300
@@ -20,7 +20,7 @@ const details = [
 ]
 const payloads = ['0x4b', '0x2D', '0x23']
 
-contract('Approval Types', function (accounts) {
+contract('Modification Approval Types', function (accounts) {
   beforeEach(async function () {
     await advanceBlock()
     this.midTime = latestTime() + duration.minutes(10)
