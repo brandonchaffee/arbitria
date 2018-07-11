@@ -20,7 +20,8 @@ Contents
    :maxdepth: 2
 
    intro.rst
-   setup.rst
+   integration.rst
+   basics.rst
    proposal.rst
    modification.rst
 

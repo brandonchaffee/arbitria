@@ -10,8 +10,11 @@ Proposal System
 Governance Types
 ================
 
-Functionality
-=============
+Creation
+========
+
+Execution
+=========
 
 Usage
 =====
