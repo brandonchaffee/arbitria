@@ -93,4 +93,9 @@ contract GenericModification is BlockableTransfer {
             mstore(0x40,add(x,msize))
         }
     }
+
+    modifier fromContract() {
+        require(msg.sender == address(this));
+        _;
+    }
 }

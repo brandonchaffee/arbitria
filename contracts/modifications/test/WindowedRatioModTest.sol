@@ -18,7 +18,8 @@ contract WindowedRatioModTest is WindowedRatio {
 
     event Mint(address indexed to, uint256 amount);
 
-    function mint(address _to, uint256 _amount) public returns (bool) {
+    function mint(address _to, uint256 _amount)
+    fromContract public returns (bool) {
       totalSupply_  = totalSupply_.add(_amount);
       balances[_to] = balances[_to].add(_amount);
       emit Mint(_to, _amount);
@@ -28,7 +29,7 @@ contract WindowedRatioModTest is WindowedRatio {
     event Burn(address indexed from, uint256 amount);
 
     function burn(address _from, uint256 _amount)
-    public returns (bool) {
+    fromContract public returns (bool) {
       totalSupply_  = totalSupply_.sub(_amount);
       balances[_from] = balances[_from].sub(_amount);
       emit Burn(_from, _amount);

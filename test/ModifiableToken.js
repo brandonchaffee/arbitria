@@ -58,6 +58,9 @@ contract('Modifiable Token', function (accounts) {
       assert.equal(ModStruct[1].toNumber(), votingWindow + latestTime())
     })
   })
+  describe('Non-Contract Call Reverting', function () {
+
+  })
   modificationBehavior(payloads, votingWindow, supply, accounts)
   standardTokennBehavior(supply, accounts[0], accounts[1], accounts[2],
     ZERO_ADDRESS)
