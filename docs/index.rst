@@ -3,18 +3,25 @@
    You can adapt this file completely to your liking, but it should at least
    contain the root `toctree` directive.
 
-Welcome to Arbitria's documentation!
-====================================
+Arbitria
+========
+
+
+
+Arbitria is a governance structure for deploying Ethereum tokens that can be
+modified with predefined conditions. This governance structure comes in two
+forms: contract modifications and contract proposals.
+
+
+Contents
+========
 
 .. toctree::
    :maxdepth: 2
-   :caption: Contents:
 
+   intro.rst
+   setup.rst
+   proposal.rst
+   modification.rst
 
-
-Indices and tables
-==================
-
-* :ref:`genindex`
-* :ref:`modindex`
-* :ref:`search`
+:ref:`genindex`
