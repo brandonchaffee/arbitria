@@ -1,13 +1,9 @@
 pragma solidity ^0.4.23;
 
-import "../GenericModification.sol";
+import "./types/Windowed.sol";
 
-contract WindowedMajority is GenericModification {
-    modifier inVoteWindow(uint256 _id) {
-        require(now < modifications[_id].windowEnd);
-        _;
-    }
-
+contract WindowedMajority is Windowed {
+    // WMf1 (Modification Appendix)
     function voteOnModification(uint256 _id, bool _approve)
         inVoteWindow(_id)
     public {

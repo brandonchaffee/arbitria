@@ -3,8 +3,14 @@ pragma solidity ^0.4.23;
 import "./BlockableTransfer.sol";
 
 contract GenericModification is BlockableTransfer {
+
+    // GMs1 (Modification Appendix)
     Modification[] public modifications;
 
+    // GMs2 (Modification Appendix)
+    uint256 public windowSize;
+
+    // GMs3 (Modification Appendix)
     struct Modification {
         bytes4 signature;
         bytes32[] payload;
@@ -14,7 +20,13 @@ contract GenericModification is BlockableTransfer {
         uint noTotal;
         mapping(address => uint) yesVotesOf;
         mapping(address => uint) noVotesOf;
-        bool hasBeenApproved;
+        bool hasBeenCalled;
+    }
+
+    // GMs4 (Modification Appendix)
+    modifier fromContract() {
+        require(msg.sender == address(this));
+        _;
     }
 
     event ModificationCreated(
@@ -25,6 +37,7 @@ contract GenericModification is BlockableTransfer {
         bytes32 detailsHash
     );
 
+    // GMf1 (Modification Appendix)
     function createModification(bytes4 _sig, bytes32[] _payload, bytes32 _hash)
     public returns(uint256){
         uint256 _id = modifications.length++;
@@ -36,6 +49,7 @@ contract GenericModification is BlockableTransfer {
         return _id;
     }
 
+    // GMf2 (Modification Appendix)
     function unblockTransfer() public {
         for(uint i=0; i < inVote[msg.sender].length; i++){
             Modification storage m = modifications[i];
@@ -47,7 +61,8 @@ contract GenericModification is BlockableTransfer {
         delete inVote[msg.sender];
     }
 
-    function accountVotes(uint256 _id, bool _approve) public {
+    // GMf3 (Modification Appendix)
+    function accountVotes(uint256 _id, bool _approve) internal {
         Modification storage m = modifications[_id];
         if(_approve){
             m.yesTotal -= m.yesVotesOf[msg.sender];
@@ -64,15 +79,20 @@ contract GenericModification is BlockableTransfer {
         }
     }
 
+    event ModificationCalled(uint256 _id, uint256 _time);
+
+    // GMf4 (Modification Appendix)
     function confirmModification(uint256 _id) public {
         Modification storage m = modifications[_id];
         require(now >= m.windowEnd);
         require(m.isValid);
-        require(!m.hasBeenApproved);
-        m.hasBeenApproved = true;
+        require(!m.hasBeenCalled);
+        m.hasBeenCalled = true;
+        emit ModificationCalled(_id, now);
         callModification(m.signature, m.payload);
     }
 
+    // GMf5 (Modification Appendix)
     function callModification(bytes4 sig, bytes32[] payload) internal {
         assembly {
             let offset := 0x04
@@ -92,10 +112,5 @@ contract GenericModification is BlockableTransfer {
             let success := call(gas, address, 0, x, msize, x, 0x20)
             mstore(0x40,add(x,msize))
         }
-    }
-
-    modifier fromContract() {
-        require(msg.sender == address(this));
-        _;
     }
 }

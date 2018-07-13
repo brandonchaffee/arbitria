@@ -1,10 +1,9 @@
 pragma solidity ^0.4.23;
 
-import "../GenericModification.sol";
+import "./types/Threshold.sol";
 
-contract EndlessThreshold is GenericModification {
-    uint256 approvalThreshold;
-
+contract EndlessThreshold is Threshold {
+    // ETf1 (Modification Appendix)
     function voteOnModification(uint256 _id, bool _approve)
     public {
         Modification storage m = modifications[_id];

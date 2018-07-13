@@ -24,5 +24,7 @@ Contents
    basics.rst
    proposal.rst
    modification.rst
+   prop-appendix.rst
+   mod-appendix.rst
 
 :ref:`genindex`

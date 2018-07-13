@@ -3,9 +3,10 @@ pragma solidity ^0.4.23;
 import "openzeppelin-solidity/contracts/token/ERC20/StandardToken.sol";
 
 contract BlockableTransfer is StandardToken {
-    mapping(address => uint[]) public inVote;
-    uint256 public windowSize;
+    // BTs1 (Modification Appendix)
+    mapping(address => uint256[]) public inVote;
 
+    // BTf1 (Modification Appendix)
     function transfer(address _to, uint256 _value)
     public returns (bool) {
         require(inVote[msg.sender].length == 0);
@@ -18,6 +19,7 @@ contract BlockableTransfer is StandardToken {
         return true;
     }
 
+    // BTf2 (Modification Appendix)
     function transferFrom(address _from, address _to, uint256 _value)
     public returns (bool) {
         require(inVote[_from].length == 0);
