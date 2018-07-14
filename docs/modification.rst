@@ -7,8 +7,8 @@
 Modification System
 ###################
 
-Governance Types
-================
+
+
 
 Creation
 ========
