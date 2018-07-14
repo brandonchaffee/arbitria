@@ -1,11 +1,12 @@
 pragma solidity ^0.4.23;
 
-import "./GenericProposal.sol";
+import "./types/Windowed.sol";
+import "./types/Threshold.sol";
 
-contract EndlessThreshold is GenericProposal {
-    uint256 approvalThreshold;
-
+contract WindowedThreshold is Windowed, Threshold {
+    // WTf1 (Proposal Appendix)
     function voteOnProposal(uint256 _id, bool _approve)
+        inVoteWindow(_id)
     public {
         Proposal storage p = proposals[_id];
         accountVotes(_id, _approve);

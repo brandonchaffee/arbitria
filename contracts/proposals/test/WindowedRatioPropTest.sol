@@ -1,7 +1,7 @@
 pragma solidity ^0.4.23;
 
 import "../democratic/DemocraticUpgrading.sol";
-import "../democratic/WindowedRatio.sol";
+import "../implementations/WindowedRatio.sol";
 
 contract WindowedRatioPropTest is DemocraticUpgrading, WindowedRatio {
     bool internal _initialized;

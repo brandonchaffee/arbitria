@@ -20,7 +20,7 @@ contract GenericModification is BlockableTransfer {
         uint noTotal;
         mapping(address => uint) yesVotesOf;
         mapping(address => uint) noVotesOf;
-        bool hasBeenCalled;
+        bool hasBeenConfirmed;
     }
 
     // GMs4 (Modification Appendix)
@@ -86,8 +86,8 @@ contract GenericModification is BlockableTransfer {
         Modification storage m = modifications[_id];
         require(now >= m.windowEnd);
         require(m.isValid);
-        require(!m.hasBeenCalled);
-        m.hasBeenCalled = true;
+        require(!m.hasBeenConfirmed);
+        m.hasBeenConfirmed = true;
         emit ModificationCalled(_id, now);
         callModification(m.signature, m.payload);
     }

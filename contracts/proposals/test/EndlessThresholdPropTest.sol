@@ -1,7 +1,7 @@
 pragma solidity ^0.4.23;
 
 import "../democratic/DemocraticUpgrading.sol";
-import "../democratic/EndlessThreshold.sol";
+import "../implementations/EndlessThreshold.sol";
 
 contract EndlessThresholdPropTest is DemocraticUpgrading, EndlessThreshold {
     bool internal _initialized;

@@ -1,7 +1,7 @@
 pragma solidity ^0.4.23;
 
 import "../democratic/DemocraticUpgrading.sol";
-import "../democratic/WindowedMajority.sol";
+import "../implementations/WindowedMajority.sol";
 
 contract WindowedMajorityPropTest is DemocraticUpgrading, WindowedMajority {
     bool internal _initialized;

@@ -1,7 +1,7 @@
 pragma solidity ^0.4.23;
 
 import "../democratic/DemocraticUpgrading.sol";
-import "../democratic/WindowedThreshold.sol";
+import "../implementations/WindowedThreshold.sol";
 
 contract WindowedThresholdPropTest is DemocraticUpgrading, WindowedThreshold {
     bool internal _initialized;

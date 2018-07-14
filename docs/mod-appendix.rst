@@ -22,7 +22,7 @@ Description         | Balance transfer function equivalent to StandardToken's ``
 
 Contract            ``BlockableTransfer.sol``
 
-Emits               ``Transfer`` event
+Emits               ``Transfer``
 
 Parameters          | ``address`` **_to** -- where transfer is going to
                     | ``uint256`` **_value** -- amount being transfered
@@ -49,7 +49,7 @@ Description         | Balance transfer from approved spender, equivalent to Stan
                     | as to maintain the proper amount of voting rights
 
 
-Emits               ``Transfer`` event
+Emits               ``Transfer``
 
 Parameters          | ``address`` **_from** -- where transfer is coming from
                     | ``address`` **_to** -- where transfer is going to
@@ -77,7 +77,7 @@ Description         | Initializes modification with the speific function signatu
                     | will be executed should the modification receive the necessary approval.
 
 
-Emits               ``ModificationCreated`` event
+Emits               ``ModificationCreated``
 
 Parameters          | ``bytes4`` **_sig** -- contract function signature targeted for execution
                     | ``bytes32[]`` **_payload** -- arguments to be passed to targeted function
@@ -405,7 +405,7 @@ Name                ``ratioDenominator``
 
 Contract            ``Ratio.sol``
 
-Description         | Ratio denominator for determining the proportional value of yes to no votes in order 
+Description         | Ratio denominator for determining the proportional value of yes to no votes in order
                     | for a mdification to be approved
 
 Type                ``uint256``
