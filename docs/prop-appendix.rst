@@ -7,7 +7,6 @@
 Proposal Appendix
 #################
 
-
 Functions
 ~~~~~~~~~
 
@@ -18,7 +17,7 @@ Name                ``transfer``
 
 Description         | Balance transfer function equivalent to StandardToken's ``transfer`` with the addition
                     | of the requirement that the sender cannot be currently in a vote so as to maintain the
-                    | proper amount voting rights.
+                    | proper amount of voting rights.
 
 
 Contract            ``BlockableTransfer.sol``
@@ -60,7 +59,7 @@ Parameters          | ``address`` **_from** -- where transfer is coming from
 Requirements        - Spender must not be currently in a vote
                     - Recipient must not be from zero ``address``
                     - Spender must have sufficient balance
-                    - Sender allowance must have sufficient to amount being transfered
+                    - Sender allowance must have sufficient to amount being transferred
 
 Returns             ``bool`` success of transfer
 ================    ====================================================
@@ -103,7 +102,7 @@ Description         | Internal function for accounting the sender vote count on 
                     | will be set to the sender balance and the total yes votes of the proposal will
                     | increase by the difference between the sender past yes votes and the senders current
                     | balance. This process is mirrored for a sender vote to not approve with the senders no
-                    | votes and the total no votes for th proposal.
+                    | votes and the total no votes for the proposal.
 
 
 Emits               *None*
@@ -162,9 +161,9 @@ Emits               *None*
 Parameters          | ``uint256`` **_id** -- ID of the proposal
 
 
-Requirements        - Current time must exceed end of window set for voting on the proposal
+Requirements        - Current time must exceed end of the window set for voting on the proposal
                     - The proposal must be valid
-                    - The proposal must not have been previosuly called
+                    - The proposal must not have been previously called
 
 Returns             *None*
 ================    ====================================================
@@ -249,7 +248,7 @@ Name                ``voteOnproposal``
 Contract            ``EndlessThreshold.sol``
 
 Description         | Accounts sender's votes on a proposal, through delegation to **GPf2**, and assess
-                    | validity (meeting threshold) of proposal with new vote totals. Then, the
+                    | validity (meeting threshold) of the proposal with new vote totals. Then, the
                     | proposal ID is appended to the ``inVote`` set of the sender so as to block
                     | transfer until this proposal has been resolved as deemed by the sender, using
                     | **GPf3**.
@@ -276,7 +275,7 @@ Name                ``voteOnproposal``
 Contract            ``WindowedMajority.sol``
 
 Description         | Accounts sender's votes on a proposal, through delegation to **GPf2**, and assess
-                    | validity (majority) of proposal with new vote totals.Then, appends proposal
+                    | validity (majority) of the proposal with new vote totals. Then, appends proposal
                     | ID to the ``inVote`` set of the sender so as to block transfer until this proposal
                     | has been resolved as deemed by the sender, using **GPf3**.
 
@@ -302,7 +301,7 @@ Name                ``voteOnproposal``
 Contract            ``WindowedRatio.sol``
 
 Description         | Accounts sender's votes on a proposal, through delegation to **GPf2**, and assess
-                    | validity (proptional votes) of proposal with new vote totals. Then, appends
+                    | validity (proportional votes) of the proposal with new vote totals. Then, appends
                     | proposal  ID to the ``inVote`` set of the sender so as to block transfer until
                     | this proposal has been resolved as deemed by the sender, using **GPf3**.
 
@@ -328,7 +327,7 @@ Name                ``voteOnproposal``
 Contract            ``WindowedThreshold.sol``
 
 Description         | Accounts sender's votes on a proposal, through delegation to **GPf2**, and assess
-                    | validity (meeting threshold) of proposal with new vote totals. Then, appends
+                    | validity (meeting threshold) of the proposal with new vote totals. Then, appends
                     | proposal  ID to the ``inVote`` set of the sender so as to block transfer until
                     | this proposal has been resolved as deemed by the sender, using **GPf3**.
 
@@ -357,7 +356,7 @@ Contract            ``BlockableTransfer.sol``
 
 Description         | Maps an ``address`` to an array of ``uint256`` used for storage of the proposal ID
                     | which the ``address`` in question is currently voting on. If the length of this array
-                    | is not equal to 0, than ``transfer`` and ``tranferFrom`` wil be block as the sender
+                    | is not equal to 0, then ``transfer`` and ``transferFrom`` will be blocked as the sender
                     | currently has outstanding votes.
 
 Type                mapping of ``address`` to ``uint256[]``
@@ -434,7 +433,7 @@ Name                ``ratioNumerator``
 Contract            ``Ratio.sol``
 
 Description         | Ratio numerator for determining the proportional value of yes to no votes in order
-                    | for a mdification to be approved
+                    | for a proposal to be approved
 
 Type                ``uint256``
 ================    ====================================================
@@ -478,7 +477,7 @@ Name                ``inVoteWindow``
 
 Contract            ``Window.sol``
 
-Description         | Modifier function for require that the voting window has not expired in order to
+Description         | Modifier function for requiring that the voting window has not expired in order to
                     | proceed with a vote on a specific proposal. This is used by windowed type
                     | implementations.
 

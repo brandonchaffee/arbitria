@@ -11,15 +11,15 @@ Amenability
 ~~~~~~~~~~~
 The underlying rationale behind Ethereum smart contracts is to provide a decentralized set rules and protocols
 which must be followed and cannot be broken. The idea of adding amenability to this seems at oppositions with
-core of this rationale. While this is true for total amenability, amenability with a predefined and immutable
-underlying structure can remain inline with the core smart contract rationale while also providing
-substaintial benefits to the smart contract ecosystem as a whole. The purpose of Arbitria is to provide a
+the core of this rationale. While this is true for total amenability, amenability with a predefined and
+immutable underlying structure can remain in line with the core smart contract rationale while also providing
+substantial benefits to the smart contract ecosystem as a whole. The purpose of Arbitria is to provide a
 structure for amenability which does not infringe on the immutable nature of smart contract while
-simultaneously providing proper methodology for modifying and upgrading smart contract in a democratic and
+simultaneously providing a proper methodology for modifying and upgrading smart contract in a democratic and
 decentralized manner.
 
-This system is enacted through a set of protocols in which the underyling smart contract can only be modified
-or upgraded should a certain predefined set of conditions be met and agreed upon by the underyling
+This system is enacted through a set of protocols in which the underlying smart contract can only be modified
+or upgraded should a certain predefined set of conditions be met and agreed upon by the underlying
 stakeholders of the contract.
 
 
@@ -27,7 +27,7 @@ stakeholders of the contract.
 Statutory Voting
 ~~~~~~~~~~~~~~~~
 In order to establish a fair and equitable methodology for voting on prospective
-proposals and modifications, the use of statutory voting rights are establish
+proposals and modifications, the use of statutory voting rights are established
 within Arbitria. Statutory voting involves a voting rights structure in which an
 entity's particular number of voting rights is equal to that entity's
 respective stake of the underlying organization.

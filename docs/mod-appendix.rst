@@ -17,7 +17,7 @@ Name                ``transfer``
 
 Description         | Balance transfer function equivalent to StandardToken's ``transfer`` with the addition
                     | of the requirement that the sender cannot be currently in a vote so as to maintain the
-                    | proper amount voting rights.
+                    | proper amount of voting rights.
 
 
 Contract            ``BlockableTransfer.sol``
@@ -59,7 +59,7 @@ Parameters          | ``address`` **_from** -- where transfer is coming from
 Requirements        - Spender must not be currently in a vote
                     - Recipient must not be from zero ``address``
                     - Spender must have sufficient balance
-                    - Sender allowance must have sufficient to amount being transfered
+                    - Sender allowance must have sufficient to amount being transferred
 
 Returns             ``bool`` success of transfer
 ================    ====================================================
@@ -73,7 +73,7 @@ Name                ``createModification``
 
 Contract            ``GenericModifcation.sol``
 
-Description         | Initializes modification with the speific function signature and relative payload that
+Description         | Initializes modification with the specific function signature and relative payload that
                     | will be executed should the modification receive the necessary approval.
 
 
@@ -128,7 +128,7 @@ Description         | Internal function for accounting the sender vote count on 
                     | will be set to the sender balance and the total yes votes of the modification will
                     | increase by the difference between the sender past yes votes and the senders current
                     | balance. This process is mirrored for a sender vote to not approve with the senders no
-                    | votes and the total no votes for th modification.
+                    | votes and the total no votes for the modification.
 
 
 Emits               *None*
@@ -151,7 +151,7 @@ Name                ``confirmModification``
 
 Contract            ``GenericModifcation.sol``
 
-Description         | Confirms the calling of an approved modfication and delegate the execution of the
+Description         | Confirms the calling of an approved modification and delegate the execution of the
                     | modification to GMf5. Once a modification has been confirmed, it can no longer be
                     | called upon, so as to avoid duplicate or malicious execution.
 
@@ -161,9 +161,9 @@ Emits               ``ModificationCalled``
 Parameters          | ``uint256`` **_id** -- ID of the modification
 
 
-Requirements        - Current time must exceed end of window set for voting on the modfication
-                    - The modifcation must be valid
-                    - The modification must not have been previosuly called
+Requirements        - Current time must exceed end of the window set for voting on the modification
+                    - The modification must be valid
+                    - The modification must not have been previously called
 
 Returns             *None*
 ================    ====================================================
@@ -177,7 +177,7 @@ Name                ``callModification``
 
 Contract            ``GenericModifcation.sol``
 
-Description         | Internal function used for exeuction of modification functions and their respective
+Description         | Internal function used for execution of modification functions and their respective
                     | payloads. This function uses assembly to execute the targeted function from the
                     | modification's given signature and appends the modification's payload as arguments
                     | to targeted function. The targeted function executes from the contract itself.
@@ -231,7 +231,7 @@ Name                ``voteOnModification``
 Contract            ``WindowedMajority.sol``
 
 Description         | Accounts sender's votes on a modification, through delegation to **GMf3**, and assess
-                    | validity (majority) of modification with new vote totals.Then, appends modification
+                    | validity (majority) of modification with new vote totals. Then, appends modification
                     | ID to the ``inVote`` set of the sender so as to block transfer until this modification
                     | has been resolved as deemed by the sender, using **GMf2**.
 
@@ -257,7 +257,7 @@ Name                ``voteOnModification``
 Contract            ``WindowedRatio.sol``
 
 Description         | Accounts sender's votes on a modification, through delegation to **GMf3**, and assess
-                    | validity (proptional votes) of modification with new vote totals. Then, appends
+                    | validity (proportional votes) of modification with new vote totals. Then, appends
                     | modification  ID to the ``inVote`` set of the sender so as to block transfer until
                     | this modification has been resolved as deemed by the sender, using **GMf2**.
 
@@ -312,7 +312,7 @@ Contract            ``BlockableTransfer.sol``
 
 Description         | Maps an ``address`` to an array of ``uint256`` used for storage of the modification ID
                     | which the ``address`` in question is currently voting on. If the length of this array
-                    | is not equal to 0, than ``transfer`` and ``tranferFrom`` wil be block as the sender
+                    | is not equal to 0, then ``transfer`` and ``transferFrom`` will be blocked as the sender
                     | currently has outstanding votes.
 
 Type                mapping of ``address`` to ``uint256[]``
@@ -329,7 +329,7 @@ Contract            ``GenericModifcation.sol``
 
 Description         | Array of ``GMs3`` used to store all modifications created. A modification is
                     | referenced by ID which corresponds to its position in ``modifications``. These IDs
-                    | increment with the creation of modifiction as they get appended to ``modifications``.
+                    | increment with the creation of modification as they get appended to ``modifications``.
 
 Type                ``Modification[]``, from **GMs3**
 ================    ====================================================
@@ -391,7 +391,7 @@ Name                ``ratioNumerator``
 Contract            ``Ratio.sol``
 
 Description         | Ratio numerator for determining the proportional value of yes to no votes in order
-                    | for a mdification to be approved
+                    | for a modification to be approved
 
 Type                ``uint256``
 ================    ====================================================
@@ -435,7 +435,7 @@ Name                ``inVoteWindow``
 
 Contract            ``Window.sol``
 
-Description         | Modifier function for require that the voting window has not expired in order to
+Description         | Modifier function for requiring that the voting window has not expired in order to
                     | proceed with a vote on a specific modification. This is used by windowed type
                     | implementations.
 

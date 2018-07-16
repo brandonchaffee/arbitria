@@ -24,7 +24,7 @@ be executed accordingly.
 
 Usage
 =====
-As the modification confirmation call to the targeted function will be comning from the contract itself, a
+As the modification confirmation call to the targeted function will be coming from the contract itself, a
 modifier, ``fromContract`` is used so that only the contract itself may call the contract. This allows for
-these functions to be open public while only exeuctable through the calling of the confirmation function. As
-such, any function desired for decrentalized approval calling should included the ``fromContract`` modifier.  
+these functions to be public while only executable through the calling of the confirmation function. As
+such, any function desired for decentralized approval calling should include the ``fromContract`` modifier.  
