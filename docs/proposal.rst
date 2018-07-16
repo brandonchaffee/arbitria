@@ -7,7 +7,6 @@
 Proposal System
 ###############
 
-
 Creation
 ========
 In order to create a proposal, an address must be provided to be used for the ``delegatecall`` target by the
@@ -18,7 +17,13 @@ an explaination for why such an interfaced should be approved and used.
 
 Execution
 =========
-
+Once a proposal has meet all necessary approval criteria, the proposal is then confirmed and the address tied
+to the proposal replaces the old implementation address at the given ``implementationPosition``. Once the
+``implementationPosition`` has be modified, all future calls to the proxy contract's fallback function will
+be delegated to this new address.
 
 Usage
 =====
+When the fallback function of the proxy contract is called, the ``implementationPosition`` is used to direct
+a ``delegatecall`` to the address of the implemented contract. This ``delegatecall`` allows for execution of
+functions and storage structure of the newly approved contract address.

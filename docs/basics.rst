@@ -9,35 +9,47 @@ Basic Structure
 
 Necessities
 ===========
-The Arbitria base smart contract is inherited from the OpenZeppelin Standard Token.
-This inheritance is needed for both the ``balance`` and ``transfer`` functionality.
-As such any contract inheriting from the Arbitria smart contract structure must also
-keep the Standard Token functionality for ``balance`` and ``transfer``. All other
-functionality associated with the Standard Token is superfluous to the Arbitria
-governance structure.
+The Arbitria base smart contract is inherited from the OpenZeppelin Standard Token. This inheritance is needed
+for both the ``balance`` and ``transfer`` functionality. As such any contract inheriting from the Arbitria
+smart contract structure must also keep the Standard Token functionality for ``balance`` and ``transfer``.
+All other functionality associated with the Standard Token is superfluous to the Arbitria governance
+structure.
 
 .. note::
-    Although Arbitria relies on the underlying balance structure for ERC20
-    tokens, this democratic governance structure works with any smart contract
-    that has a mapping of ``address`` to ``uint`` representing an that address'
-    stake of a whole.
-
+    Although Arbitria relies on the underlying balance structure for ERC20 tokens, this democratic governance
+    structure works with any smart contract that has a mapping of ``address`` to ``uint`` representing an that
+    address' stake of a whole.
 
 Voting Rights
 =============
-
-
-
-This smart contract is inherited for the use of the token balance as an address'
-balance represents its proportional stake relative to the total token supply. This
-token balance is used to represent
+Voting rights within Arbitria are tied to the ``balance`` defined by the StandardToken. These balances
+represent an address proportion of the whole of the ``totalSupply`` and can be used to accurately represent
+an address stake to the underlying smart contract associated with the token. As such, an address' specific
+balance equats to the amount of voting that address recieves. When an ammendment, being either a proposal or
+modification, is voted upon, the total votes either for or against are incremented by an amount equal to the
+balance of the address of the sender.
 
 Transfer Block & Unblock
 ========================
+To provide a fair and equitable process by which total votes are assessed, balances during voting must remain
+constant. This must be implemented in order to avoid vote churning in which an individual proceeds to votes
+and transfers their balance to new accounts, thus providing the individual virtually limitless voting rights.
+As such, once an ammendment has been voted upon by an address, that address will be ineligible to use either
+``transfer`` or ``transferFrom``. This keeps the total supply and voting rights equivalent. Once an ammendment
+has terminated, either through expiration, execution, or the loss of the sender's desire to vote, the ability
+to ``transfer`` or ``transferFrom`` become eligible again.
 
+.. note::
+    An alternative to transfer blocking and unblocking would be the inclusion of vote dcrementing upon the
+    calling of ``transfer`` or ``transferFrom``. While this would be less constricting, the gas costs
+    associated with this decrementing action would be considerly high. The implementation of vote decrementing
+    will be included in future version of Arbitria but its use is not advised.
 
-Vote Accounting
-===============
+Vote Switching
+==============
+Votes on ammendment, either a proposal or modification, can be reverse should the sender so choose. This
+allows the sender to determine their voting preference at the given current circumstance and allows the sender
+to actively change the direction in which they are voting should they so choose.
 
 
 Governance Types
