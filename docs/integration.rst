@@ -1,7 +1,7 @@
 .. index:: ! integration
 
 .. _integration:
-.. _package: http://www.google.com/
+.. _package: https://www.npmjs.com/package/arbitria
 
 __ package_
 
