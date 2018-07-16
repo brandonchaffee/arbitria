@@ -1,3 +1,9 @@
+/*
+    Documentation: https://arbitria.readthedocs.io
+    Author: Brandon Chaffee
+    License: MIT
+*/
+
 pragma solidity ^0.4.21;
 
 import "./Proxy.sol";

@@ -1,3 +1,8 @@
+/*
+    Documentation: https://github.com/zeppelinos/labs
+    Author: ZeppelinOS Team
+*/
+
 pragma solidity ^0.4.23;
 
 /**

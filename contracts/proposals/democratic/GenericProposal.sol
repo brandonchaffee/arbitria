@@ -1,3 +1,9 @@
+/*
+    Documentation: https://arbitria.readthedocs.io
+    Author: Brandon Chaffee
+    License: MIT
+*/
+
 pragma solidity ^0.4.23;
 
 import "./BlockableTransfer.sol";
@@ -7,7 +13,7 @@ contract GenericProposal is BlockableTransfer {
     Proposal[] public proposals;
     // GPs2 (Proposal Appendix)
     uint256 public windowSize;
-    
+
     // GPs2 (Proposal Appendix)
     struct Proposal {
         address target;
